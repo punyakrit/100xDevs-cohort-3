@@ -40,17 +40,37 @@
 // console.log(Date.now());
 
 
-const fs = require("fs");
+// const fs = require("fs");
 
-fs.readFile("a.txt", "utf-8", function (err, contents) {
-  console.log(contents);
-});
+// function read(err , data){
+//     console.log(data)
+// }
 
-fs.readFile("b.txt", "utf-8", function (err, contents) {
-  console.log(contents);
-});
+// fs.readFile("a.txt", "utf-8", read )
 
-fs.readFile("c.txt", "utf-8", function (err, contents) {
-  console.log(contents);
-});
+// fs.readFile("b.txt", "utf-8" , read)
 
+// // fs.readFile("c.txt", "utf-8" , read);
+// setTimeout(()=>{
+//     console.log("Done")
+// },0)
+// console.log("Do")
+
+
+
+
+
+console.log("first")
+
+setTimeout(()=>{
+    console.log("call")
+},500)
+
+console.log("After")
+
+let c = 0
+for(let i=0; i<10000000000; i++){
+    c = c+1
+}
+
+console.log("Expensive opp")
