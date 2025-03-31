@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="findSum()">Sum</button>
+    
+    <script>
+        async function findSum(){
+            const response = await fetch("http://localhost:3000",{
+                method:"post",
+                body:{
+                    a:10
+                }
+            })
+            const data = await response.json()
+        }
+    </script>
+</body>
+</html>
