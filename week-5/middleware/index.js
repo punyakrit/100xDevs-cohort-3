@@ -2,7 +2,16 @@ const express = require("express");
 
 const app = express();
 
-app.get("/sum", function(req, res) {
+app.use(express.json())
+
+function middlewareCode(req,res,next){
+    console.log(`${req.method} , ${req.hostname}${req.url}`)
+    next()
+}
+
+app.use(middlewareCode)
+
+app.get("/sum", function(req,res){
     const a = parseInt(req.query.a);
     const b = parseInt(req.query.b);
 
