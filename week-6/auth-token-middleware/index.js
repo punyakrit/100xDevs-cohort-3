@@ -1,10 +1,10 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
 const JWT_SECRET = "dmnjejdejd"
-
+const cors = require('cors')
 const app = express()
 app.use(express.json())
-
+app.use(cors())
 const users= []
 
 function authMiddleware(req,res,next){
@@ -76,4 +76,4 @@ app.get('/me',authMiddleware , (req,res)=>{
     })
 })
 
-app.listen(3000)
+app.listen(8000)
