@@ -3,7 +3,7 @@ const Schema = mongooes.Schema
 const ObjectId = mongooes.ObjectId
 
 const User = new Schema({
-    email: String,
+    email: {type : String, unique: true},
     password : String,
     name: String
 })

@@ -1,28 +1,40 @@
 const express = require("express");
-const app = express();
 const { userModel, todoModel } = require("./db");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "3ndejndje";
 const mongoose = require("mongoose");
-app.use(express.json());
+const bcrypt = require("bcrypt");
+const app = express();
+const {z} = require('zod')
 mongoose.connect(
   "mongodb+srv://admin:wyWWjD7kVASGlKJh@cluster0.gt81chd.mongodb.net/Todo-App-Database-week-7"
 );
+app.use(express.json());
+
+
 
 app.post("/signup", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   const name = req.body.name;
 
-  await userModel.insertOne({
-    email: email,
-    password: password,
-    name: name,
-  });
+  const hashedPass = await bcrypt.hash(password, 10);
+  try {
+    await userModel.insertOne({
+      email: email,
+      password: hashedPass,
+      name: name,
+    });
 
-  res.json({
-    message: "you are signed up",
-  });
+    res.json({
+      message: "you are signed up",
+    });
+  } catch {
+    res.json({
+      message: "Error occured",
+    });
+  }
+  return;
 });
 
 app.post("/signin", async (req, res) => {
@@ -31,9 +43,20 @@ app.post("/signin", async (req, res) => {
 
   const checkUser = await userModel.findOne({
     email: email,
-    password: password,
   });
-  if (checkUser) {
+
+  if (!checkUser) {
+    res.json({
+      message: "User not there",
+    });
+    return;
+  }
+
+  console.log(checkUser.password);
+  const hashedPass = await bcrypt.compare(password, checkUser.password);
+
+  console.log(hashedPass);
+  if (hashedPass) {
     const token = jwt.sign({ userId: checkUser._id.toString() }, JWT_SECRET);
     res.json({
       token: token,
