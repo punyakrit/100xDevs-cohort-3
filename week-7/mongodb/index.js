@@ -5,15 +5,30 @@ const JWT_SECRET = "3ndejndje";
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const app = express();
-const {z} = require('zod')
+const { z } = require("zod");
+
 mongoose.connect(
   "mongodb+srv://admin:wyWWjD7kVASGlKJh@cluster0.gt81chd.mongodb.net/Todo-App-Database-week-7"
 );
 app.use(express.json());
 
-
-
 app.post("/signup", async (req, res) => {
+  const reqBody = z.object({
+    email: z.string().email("invalid email hai"),
+    name: z.string("enter valid"),
+    password: z.string().min(3).max(10),
+  });
+
+  const parsedData =  reqBody.safeParse(req.body)
+
+  if(!parsedData.success){
+    res.json({
+        message : "Enter valid format",
+        error : parsedData.error
+    })
+    return
+  }
+
   const email = req.body.email;
   const password = req.body.password;
   const name = req.body.name;
@@ -29,9 +44,9 @@ app.post("/signup", async (req, res) => {
     res.json({
       message: "you are signed up",
     });
-  } catch {
+  } catch(e) {
     res.json({
-      message: "Error occured",
+      message: "Error occured"+e,
     });
   }
   return;
