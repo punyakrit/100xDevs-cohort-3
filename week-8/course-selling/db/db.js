@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://admin:wyWWjD7kVASGlKJh@cluster0.gt81chd.mongodb.net/week-8-course-Selling')
 
 const schema = mongoose.Schema
 
