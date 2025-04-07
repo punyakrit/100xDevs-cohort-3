@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken')
 userRouter.use(express.json())
 require('dotenv').config()
 const {userAuth} = require('../middleware/user')
+
+
 userRouter.post('/signup', async (req,res)=>{
     const email = req.body.email
     const name = req.body.name
