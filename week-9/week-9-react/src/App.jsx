@@ -1,44 +1,72 @@
-import { useState } from "react";
-import { PostComponent } from "./PostComponent";
+import React, { useEffect, useState } from "react";
 
 function App() {
-  const [posts, setPosts] = useState([]);
-
-
-  function addPost() {
-    setPosts([
-      ...posts,
-      {
-        name: "harkirat",
-        subtitle: "10000 followers",
-        time: "2m ago",
-        image:
-          "https://appx-wsb-gcp-mcdn.akamai.net.in/subject/2023-01-17-0.17044360120951185.jpg",
-        description:
-          "What to know how to win big? Check out how these folks won $6000 in bounties.",
-      },
-    ]);
-  }
+  const [count, setCount] = useState(1);
+  useEffect(() => {
+    setInterval(() => {
+      setCount(count => count + 1);
+    }, 1000);
+  }, []);
 
   return (
-    <div style={{ background: "#dfe6e9", height: "100vh" }}>
-      <button onClick={addPost}>Add post</button>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div>
-          {posts.map((post) => (
-            <PostComponent
-              name={post.name}
-              subtitle={post.subtitle}
-              time={post.title}
-              image={post.image}
-              description={post.description}
-            />
-          ))}
-        </div>
+    <div>
+      <div
+        style={{
+          width: 40,
+          height: 40,
+          backgroundColor: "yellow",
+          borderRadius: 20,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {count}
       </div>
     </div>
   );
 }
+
+// import { useState } from "react";
+// import { PostComponent } from "./PostComponent";
+
+// function App() {
+//   const [posts, setPosts] = useState([]);
+
+//   function addPost() {
+//     setPosts([
+//       ...posts,
+//       {
+//         name: "harkirat",
+//         subtitle: "10000 followers",
+//         time: "2m ago",
+//         image:
+//           "https://appx-wsb-gcp-mcdn.akamai.net.in/subject/2023-01-17-0.17044360120951185.jpg",
+//         description:
+//           "What to know how to win big? Check out how these folks won $6000 in bounties.",
+//       },
+//     ]);
+//   }
+
+//   return (
+//     <div style={{ background: "#dfe6e9", height: "100vh" }}>
+//       <button onClick={addPost}>Add post</button>
+//       <div style={{ display: "flex", justifyContent: "center" }}>
+//         <div>
+//           {posts.map((post) => (
+//             <PostComponent
+//               name={post.name}
+//               subtitle={post.subtitle}
+//               time={post.title}
+//               image={post.image}
+//               description={post.description}
+//             />
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
 // function Notification() {
 //   const [count, setCount] = useState(0);
