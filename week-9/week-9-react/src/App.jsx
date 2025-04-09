@@ -3,9 +3,13 @@ import React, { useEffect, useState } from "react";
 function App() {
   const [count, setCount] = useState(1);
   useEffect(() => {
-    setInterval(() => {
+    let inter = setInterval(() => {
       setCount(count => count + 1);
     }, 1000);
+
+    return function(){
+      clearInterval(inter)
+    }
   }, []);
 
   return (
