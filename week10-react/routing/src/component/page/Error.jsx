@@ -1,11 +1,11 @@
 import React from 'react'
 
-function App() {
+function Error() {
   return (
     <div>
-      dws
+      Invalid ROute
     </div>
   )
 }
 
-export default App
+export default Error
