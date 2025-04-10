@@ -1,35 +1,62 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function App() {
-  const [count, setCount] = useState(1);
-  useEffect(() => {
-    let inter = setInterval(() => {
-      setCount(count => count + 1);
-    }, 1000);
-
-    return function(){
-      clearInterval(inter)
-    }
-  }, []);
-
   return (
     <div>
-      <div
-        style={{
-          width: 40,
-          height: 40,
-          backgroundColor: "yellow",
-          borderRadius: 20,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {count}
-      </div>
+      <Card>demejdm</Card>
+      <Card>demejdm</Card>
+      <Card>demejdm</Card>
     </div>
   );
 }
+
+function Card({ children }) {
+  return (
+    <div
+      style={{
+        backgroundColor: "red",
+        borderRadius: 10,
+        color: "white",
+        padding: 7,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+// import React, { useEffect, useState } from "react";
+
+// function App() {
+//   const [count, setCount] = useState(1);
+//   useEffect(() => {
+//     let inter = setInterval(() => {
+//       setCount(count => count + 1);
+//     }, 1000);
+
+//     return function(){
+//       clearInterval(inter)
+//     }
+//   }, []);
+
+//   return (
+//     <div>
+//       <div
+//         style={{
+//           width: 40,
+//           height: 40,
+//           backgroundColor: "yellow",
+//           borderRadius: 20,
+//           display: "flex",
+//           justifyContent: "center",
+//           alignItems: "center",
+//         }}
+//       >
+//         {count}
+//       </div>
+//     </div>
+//   );
+// }
 
 // import { useState } from "react";
 // import { PostComponent } from "./PostComponent";
