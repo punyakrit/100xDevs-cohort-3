@@ -1,9 +1,16 @@
 import React from 'react'
+import { useDebounce } from './hooks/useDebounc'
 
 function App() {
+
+  function apiCall(){
+    console.log("Api called")
+  }
+
+  const  debouncing = useDebounce(apiCall)
   return (
     <div>
-      
+      <input onChange={debouncing}></input>
     </div>
   )
 }
