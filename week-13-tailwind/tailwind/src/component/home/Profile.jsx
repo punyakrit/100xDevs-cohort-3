@@ -3,7 +3,7 @@ import CardHolder from "./CardHolder";
 
 function Profile() {
   return (
-    <div className="-mt-10 ml-10">
+    <div className="-mt-10 ">
       <CardHolder>
         <div className="p-8 flex flex-col items-center">
           <img
