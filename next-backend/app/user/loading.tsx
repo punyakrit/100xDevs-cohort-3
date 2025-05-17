@@ -1,11 +1,11 @@
 import React from 'react'
 
-function page() {
+function loading() {
   return (
     <div>
-      Hi
+      Loading...
     </div>
   )
 }
 
-export default page
+export default loading
